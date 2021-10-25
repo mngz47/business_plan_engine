@@ -1,0 +1,36 @@
+.verification {
+background:white;
+width:150px;
+padding:4px;
+}
+
+.verification span {
+float:right;
+}
+
+.verification .finish {
+color:red;
+}
+
+input {
+padding-right:40px;
+}
+
+textarea {
+padding-right:40px;	
+}
+
+.input .tick {
+background-image: url(resources/tick.png);
+background-repeat:no-repeat;
+background-position:90% 3px;
+background-size: 20px 20px;
+
+}
+
+.input .cross {
+background-image: url(resources/cross.png);
+background-repeat:no-repeat;
+background-position:90% 3px;
+background-size:20px 20px;
+}

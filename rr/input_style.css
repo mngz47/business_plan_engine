@@ -1,0 +1,72 @@
+.body .content .input {
+min-height:350px;
+margin-bottom:20px;
+}
+
+.body .content .input .row {
+padding:50px;
+border-bottom:2px black solid;
+}
+
+.body .content .input .row .col-sm-5 input{
+display:none;
+}
+
+.body .content .input .row .col-sm-5 .images textarea{
+width:100%;
+height:40px;
+}
+
+.body .content .input .row .col-sm-5 .images img{
+width:100%;
+}
+
+.body .content .input input {
+border: 0px;
+display:block;
+margin:3px;
+height:30px;
+border-left:1px red solid;
+padding-left:2px;
+}
+
+.body .content .input span {
+font-weight:bold;
+display:block;
+}
+
+.body .content .input select {
+border: 0px;
+display:block;
+margin:3px;
+height:30px;
+}
+
+
+.body .content .input .slide #date_added {
+display:none;
+}
+
+.body .content .input .slide #v_code {
+display:none;
+}
+
+.body .content .input .slide #v_code_show {
+display:block;
+}
+
+.body .content .input .slide #v_load {
+display:none;
+}
+
+.body .content .input .slide #v_load_show {
+display:block;
+}
+
+.body .content .input .nav {
+height:45px;
+}
+
+.body .content .input .nav .next {
+float:right;
+}

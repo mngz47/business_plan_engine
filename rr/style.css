@@ -1,0 +1,340 @@
+body {
+background-color:#f4f6f9; 
+}
+
+.p_cont {
+width:100%;
+}
+
+p {
+font-size:1.1em;
+padding:10px;
+}
+
+iframe {
+display:block;
+margin-left:auto;
+margin-right:auto;
+}
+
+.tint{
+background-color:rgba(255, 255, 255, 0.7);
+padding:5px;
+}
+
+.wrapper {
+padding:5px;
+padding-left:15px;
+}
+
+.space {
+margin:2px;
+}
+
+.index { 
+border-bottom:2px black solid;
+}
+
+.container{
+background:rgba(255, 255, 255, 0.7);
+}
+
+.invisible{
+display:none;
+}
+
+.highlight {
+color:red;
+}
+
+.highlight_green {
+color:green;
+}
+
+.body .content .menu {
+margin-left:auto;
+margin-right:auto;
+margin-bottom:20px;
+margin-top:20px;
+}
+
+.body .content .menu td{
+font-size:1.2em;
+}
+
+.header {
+padding:4px;
+box-shadow: -1px -1px 7px 0px rgba(0,0,0,0.2);
+}
+
+.header .header_center{
+min-height:100px;
+}
+
+.header .heading  a {
+color:black;
+}
+
+.header .heading  a:hover {
+text-decoration:none;
+}
+
+.header .heading {
+background-image: url(https://www.productlists.co.za/resources/logo.png);
+background-repeat:no-repeat;
+background-position:0 0;
+background-size:40px;
+display:inline-block;
+margin:5px;
+margin-top:20px;
+padding-left:40px;
+}
+
+.header .logo {
+background-image: url(resources/logo.png);
+background-repeat:no-repeat;
+background-position:0 0;
+background-size:40px;
+display:inline-block;
+margin:5px;
+margin-top:20px;
+}
+
+.header .logo_start {
+width:40px;
+height:40px;
+display:none;
+}
+
+.header .title {
+padding-left:40px;
+text-decoration:none;
+color:black;
+font-size:2em;
+display:inline-block;
+margin:5px;
+margin-top:20px;
+}
+
+.block_hoov{
+margin:3px;
+background:rgba(255, 255, 0, 0.8);
+min-height:30px;
+padding:5px;
+color:gray;
+}
+
+.block:hover{
+background:rgba(255, 255, 0, 0.8);
+}
+
+.block {
+margin:3px;
+background:rgba(255, 255, 0, 0.23);
+min-height:30px;
+padding:10px;
+color:gray;
+}
+
+.block .row {
+width:60%;
+margin-left:auto;
+margin-right:auto;
+}
+
+.group_4 img {
+margin:0px;
+width:100%;
+}
+
+.group_4 .price{
+color:green;
+display:block;
+border-bottom:black 1px solid;
+}
+
+.group_4 {
+margin-left:auto;
+margin-right:auto;
+text-align:center;
+}
+
+.sharp_two a{
+height:80px;
+display:block;
+background-repeat:no-repeat;
+background-size:100%;
+color:black;
+font-weight:bold;
+}
+
+.center {
+text-align:center;
+}
+
+.big{
+color:orange;
+font-size:2.1em;
+}
+
+.right_pane .opt_begin{
+border-bottom:black solid 2px;
+}
+
+.right_pane .opt input {
+float:right;
+}
+
+.right_pane .opt div{
+padding-left:34px;
+background-repeat:no-repeat;
+background-position:0 0;
+background-size:30px;
+width:80%;
+display:inline-block;
+}
+
+.right_pane {
+margin-left:15px;
+}
+
+.right_pane #right_pane_5 {
+margin-top:20px;
+}
+
+.right_pane #right_pane_6 {
+margin-top:20px;
+}
+
+.left_pane #left_pane_1{
+margin-bottom:20px;
+min-height:40px;
+}
+
+.left_pane #left_pane_2{
+min-height:40px;
+}
+
+.right_pane a:hover{
+text-decoration:none;
+}
+.left_pane a:hover{
+text-decoration:none;
+}
+
+.main a:hover{
+text-decoration:none;
+}
+
+.right_pane {
+padding-top:5px;
+}
+
+.left_pane {
+padding-top:5px;
+}
+
+
+.fixed_right {
+padding-left:10px;
+position:absolute;
+width:22%;
+overflow-y:auto;
+left:75%;
+}
+
+.fixed_left {
+position:absolute;
+width:22%;
+left:4%;
+}
+
+.scroll_text_cont .scroll_text {
+font-size:1.2em;
+padding-left:4px;
+padding-right:4px;
+margin:2px;
+color:black;
+display:inline-block;
+background:rgba(255, 0, 0, 0.35);
+border-radius:10px;
+}
+
+.scroll_text_cont .scroll_text:hover {
+text-decoration:none;
+background:rgba(255, 0, 0, 0.7);
+}
+
+.scroll_text_cont {
+text-align:center;
+padding-top:20px;
+padding-bottom:20px;
+}
+
+.loader {
+background-image: url(https://www.productlists.co.za/resources/loader.gif);
+background-repeat:no-repeat;
+background-position:50% 50%;
+background-size:20px 20px;
+}
+
+.scroll_x {
+width:100%;
+overflow-x:auto;
+}
+
+.scroll_x_height {
+	height:150px;
+}
+
+.move_to_left {
+	margin-left:2px;
+	padding:3px;
+	width:150px;
+}
+
+.force_right .variance_p {
+width:300px;
+margin-right:auto;
+margin-left:auto;
+margin-top:20px;
+}
+
+
+.horizontal_view {
+padding:10px;
+}
+
+.horizontal_view a{
+display:block;
+margin:4px;
+width:70px;
+height:100px;
+float:left;
+background-repeat:no-repeat;
+background-position:0 0;
+background-size:auto 100%;
+}
+
+
+.forward {
+text-align:center;
+}
+    
+.forward a {
+	    background:red;
+		display:inline-block;
+		width:40px;
+		height:40px;
+		border-radius:30%;
+}
+	
+.fshare {
+background-image: url(https://www.productlists.co.za/feature/shopping_cart/affiliate_logos/facebook.png);
+background-repeat:no-repeat;
+background-position:0 0;
+background-size:20px;
+display:inline-block;
+padding-left:22px;
+}	
+	
