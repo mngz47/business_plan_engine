@@ -233,7 +233,7 @@ function getIndustryTemp(index){
 
        var f = new FormData();
 	f.append("default","start");
-	   var data = sendformG("https://"+HOME_+"/industry/"+items[index]+'.php',f);
+	   var data = sendformG("https://"+HOME_+"/industry/"+items[index]+".php",f);
 
            if(data){
 			for(var a=0;a<(items[index].length-1);a++){
