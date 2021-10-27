@@ -259,7 +259,6 @@ var headings =
 "Analysis of market, customers and competitors",
 "Analysis of production plan and processes",
 "Capital Expenditure Plan (machinery and equipment costs)",
-"Financial projections",
 "Income statement ",
 "Balance sheet",
 "Cash flow statement",
