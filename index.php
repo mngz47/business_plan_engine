@@ -223,10 +223,9 @@ req.send(form);
 req.onload = function(){
 	var data = req.responseText;
 			if(data){
-			for(var a=0;a<(items[index].length-1);a++){
-			
-			   e('headings').getElementsByClassName('paragraph')[a].innerHTML = data.split('<;>')[a+1];
-			
+			var data_paragraph = data.split("<;>");
+			for(var a=0;a<(headings.length);a++){
+			e('headings').getElementsByClassName('paragraph')[a].innerHTML = data_paragraph[a];
 			}
 			}else{
 			alert("Misplaced Template");
