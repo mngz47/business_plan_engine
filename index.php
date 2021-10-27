@@ -221,17 +221,17 @@ req.open("POST",url,true);
 req.send(form);
 
 req.onload = function(){
-	var data = req.responseText;
-			if(data){
-			var data_paragraph = data.split("<;>");
-			for(var a=0;a<(headings.length);a++){
-			e('headings').getElementsByClassName('paragraph')[a].innerHTML = data_paragraph[a];
-			}
+			var data = req.responseText;
+			if(data.includes("The requested URL was not found on this server")){
+				alert("Misplaced Template");
 			}else{
-			alert("Misplaced Template");
+				var data_paragraph = data.split("<;>");
+				for(var a=0;a<(headings.length);a++){
+				e('headings').getElementsByClassName('paragraph')[a].innerHTML = data_paragraph[a];
+			}
 			}
 };
-return req.responseText;
+				return req.responseText;
 }
 	
 	//var HOME_ = "mngz47.github.io/business_plan_engine";
