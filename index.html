@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CV Engine</title>
+<title>Business Plan Engine</title>
 	 <link rel="shortcut icon" type="image/jpg" href="https://raw.githubusercontent.com/mngz47/productlists-resources/main/p_logo.jpg" />
 <link rel=stylesheet href=rr/style.css />
 <link rel=stylesheet href=rr/bootstrap.min.css />
@@ -232,7 +232,7 @@ return req.responseText;
 function getIndustryTemp(index){
 
        var f = new FormData();
-	   var data = sendformG("https://mngz47.github.io/business_plan_engine/industry/"+items[index]+'.txt',f);
+	   var data = sendformG("https://mngz47.github.io/business_plan_engine/industry/"+items[index]+'.html',f);
 
            if(data){
 			for(var a=0;a<(items[index].length-1);a++){
