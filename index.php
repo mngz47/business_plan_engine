@@ -221,21 +221,8 @@ req.open("POST",url,true);
 req.send(form);
 
 req.onload = function(){
-alert(req.responseText);	
-};
-return req.responseText;
-}
-	
-	//var HOME_ = "mngz47.github.io/business_plan_engine";
-	var HOME_ = "business-plan-engine.herokuapp.com"
-
-function getIndustryTemp(index){
-
-       var f = new FormData();
-	f.append("default","start");
-	   var data = sendformG("https://"+HOME_+"/industry/"+items[index]+".php",f);
-
-           if(data){
+	var data = req.responseText;
+			if(data){
 			for(var a=0;a<(items[index].length-1);a++){
 			
 			   e('headings').getElementsByClassName('paragraph')[a].value = data.split('<;>')[a+1];
@@ -244,6 +231,17 @@ function getIndustryTemp(index){
 			}else{
 			alert("Misplaced Template");
 			}
+};
+return req.responseText;
+}
+	
+	//var HOME_ = "mngz47.github.io/business_plan_engine";
+	var HOME_ = "business-plan-engine.herokuapp.com"
+
+function getIndustryTemp(index){
+       	var f = new FormData();
+	f.append("default","start");
+	sendformG("https://"+HOME_+"/industry/"+items[index]+".php",f);      
 }
 
 </script>
