@@ -225,7 +225,7 @@ req.onload = function(){
 			if(data){
 			for(var a=0;a<(items[index].length-1);a++){
 			
-			   e('headings').getElementsByClassName('paragraph')[a].value = data.split('<;>')[a+1];
+			   e('headings').getElementsByClassName('paragraph')[a].innerHTML = data.split('<;>')[a+1];
 			
 			}
 			}else{
