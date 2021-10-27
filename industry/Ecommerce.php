@@ -16,7 +16,6 @@ Advertising (R100000)
 Wages(R100000)
 ________________
 Totals (R500 000)<;>
-Financial projections
 Income statement (1 month projection)
 Revenue
 Direct sales (100 000)
