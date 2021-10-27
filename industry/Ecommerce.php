@@ -15,7 +15,7 @@ VM/Hosting and rent (R100000)
 Advertising (R100000)
 Wages(R100000)
 ________________
-Totals (R500 000)
+Totals (R500 000)<;>
 Financial projections
 Income statement (1 month projection)
 Revenue
@@ -27,7 +27,7 @@ Advertising (50 000)
 VM/hosting (1 000)
 Wages (26000)
 Net Income
-(103 000)
+(103 000)<;>
 Balance sheet (1 month projection)
 Assets
 Web App (100 000)
@@ -42,7 +42,7 @@ Advertising (50 000)
 VM/hosting (1 000)
 Wages (26000)
 Total liabilities
-(97 000)
+(97 000)<;>
 Cash flow statement (1 month projection)
 Operating cash flow
 Net income (103 000)
