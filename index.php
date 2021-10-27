@@ -215,7 +215,7 @@ var items = [
 		
     }
 
-function sendformG(url,form){
+function sendformG(index,url,form){
 var req = new XMLHttpRequest();
 req.open("POST",url,true);
 req.send(form);
@@ -241,7 +241,7 @@ return req.responseText;
 function getIndustryTemp(index){
        	var f = new FormData();
 	f.append("default","start");
-	sendformG("https://"+HOME_+"/industry/"+items[index]+".php",f);      
+	sendformG(index,"https://"+HOME_+"/industry/"+items[index]+".php",f);      
 }
 
 </script>
