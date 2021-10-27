@@ -221,7 +221,7 @@ req.open("POST",url,true);
 req.send(form);
 
 req.onload = function(){
-//alert(req.responseText);	
+alert(req.responseText);	
 };
 return req.responseText;
 }
@@ -232,6 +232,7 @@ return req.responseText;
 function getIndustryTemp(index){
 
        var f = new FormData();
+	f.append("default","start");
 	   var data = sendformG("https://"+HOME_+"/industry/"+items[index]+'.php',f);
 
            if(data){
