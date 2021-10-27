@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CV Engine</title>
+<title>Business Plan Engine</title>
+	 <link rel="shortcut icon" type="image/jpg" href="https://raw.githubusercontent.com/mngz47/productlists-resources/main/p_logo.jpg" />
 <link rel=stylesheet href=rr/style.css />
 <link rel=stylesheet href=rr/bootstrap.min.css />
 
@@ -47,84 +48,63 @@ FBInstant.startGameAsync()
 </head>
 <body>
 <script>
-
-function reload_cache(target_id){
-e(target_id+'_cache').innerHTML='';
-var oeq = e(target_id+'_output').getElementsByTagName('tr');
-
-for(var a=1;a<oeq.length;a++){
-	oeq[a-1].id = target_id+'_output_'+a;
-var oeq2 = oeq[a].getElementsByTagName('td');
-for(var b=0;b<oeq2.length;b++){
-e(target_id+'_cache').innerHTML+='<input type=text name='+oeq2[b].name+' value='+oeq2[b].value+' />';
-}
-}
-}
-
 var super_string = '';
-
-function validate(){
-var vv = false;
-var i = document.getElementsByTagName('input');
-for(a=0;a<i.length;a++){
-if(i[a].value){
-
-putISuper(i[a]);
-
-vv = true;
-}else{
-i[a].style.border = 'solid red 1px';
-}
-}
-return vv;
-}
 
 function reset(){
 super_string = super_string?'':super_string;
 }
 
-function putISuper(super_){
+function putISuper(){
 
-if(super_.value && (super_.type=='checkbox'?super_.checked:true)){
+setDate('date_added');reset();
 
-if(super_.className=='id_number'){
-super_string+= '<span style="margin-left:100px;display:inline-block;" >Id Number:</span>'+super_.value+'<br>';
-super_string+= '<span style="margin-left:100px;display:inline-block;" >Gender:</span>'+e('gender').value+'<br>';
-}else if(super_.className=='cell_number'){
-super_string+= '<span  style="margin-left:100px;display:inline-block;" >'+super_.name+':</span>'+super_.value+'<br>';
-super_string+='<strong style="font-size:1.1em;" >Personal Details</strong>';
+  var headings = e('headings').getElementsByTagName('h3');
+  var paragraphs = e('headings').getElementsByClassName('paragraph');
 
-}else if(super_.className=='other_languages'){
-super_string+= '<span  style="margin-left:100px;display:inline-block;" >Other Languages:</span>'+super_.value+'<br>';
-super_string+= '<span  style="margin-left:100px;display:inline-block;" >Marital Status:</span>'+e('marital_status').value+'<br>';
-super_string+= '<span  style="margin-left:100px;display:inline-block;" >Health Status:</span>'+e('health_status').value+'<br>';
-super_string+= '<span  style="margin-left:100px;display:inline-block;" >Criminal Record:</span>'+e('criminal_record').value+'<br>';
-super_string+= '<span  style="margin-left:100px;display:inline-block;" >Religion:</span>'+e('religion').value+'<br>';
-super_string+='<strong style="font-size:1.1em;" >Educational Qualifications</strong>';
-}else if(super_.className=='eq_year'){
-super_string+= '<span  style="margin-left:100px;display:inline-block;" >Year:</span>'+super_.value+'<br>';
-super_string+='<strong style="font-size:1.1em;" >Other Educational Qualifications</strong>';
-super_string+= e('oeq_output').outerHTML;
-super_string+= '<strong style="font-size:1.1em;" >Work Experience</strong>';
-super_string+= e('we_output').outerHTML;
-super_string+= '<strong style="font-size:1.1em;" >References</strong>';
-super_string+= e('ref_output').outerHTML;
-super_string+= '<p>'+e('personal_profile').value+'</p>';
+	for(var a=0;a<headings.length;a++){
+	if(paragraphs[a].innerHTML){
+		super_string+=headings[a].outerHTML;
+		super_string+=paragraphs[a].innerHTML;
+	}
+	}
+	
+	super_string+='<h3>Attachments</h3>';
+	
+  var attachments = e('attachments').getElementsByTagName('input');
+	for(var a=0;a<attachments.length;a++){
+		super_string+= '<a href="'+attachments[a].value+'" >'+attachments[a].value+'</a><br>';
+	}
 
-}else{
-super_string+= '<span>'+super_.name+':</span>'+super_.value+'<br>';
-}
-}
 
+  return 
+  '<p><h1>'+e('company_name').value+' Business Plan</h1>'+
+  (e('h_email').value?
+  e('h_email').value+'<br>'+
+  e('h_cell_no').value+'<br>'+
+  e('h_address').value+'<br>':'')+
+  '</p>'+
+  super_string+
+  '<br><br>'+e('date_added').value;
 }
 
-function sendEmail(ss){
-if(ss){
+
+function perFormActions(ss){
+  var actions = e('actions').getElementsByClassName('email');
+  for(var a=0;a<actions.length;a++){
+            if(e('actions').getElementsByClassName('usage')[a].checked){
+			 sendEmail(e('actions').getElementsByTagName('input')[a].value,ss);
+			}   
+  }
+}
+
+
+function sendEmail(email,ss){
+if(ss && email){
 
 if(confirm('Send Information To Target Email')){
 var template_params = {
-   "reply_to": e('target_email').value,
-   "from_name": 'CV Engine',
+   "reply_to": email,
+   "from_name": 'Business Plan Engine',
    "to_name": e('name_id').value,
    "message_html": '<h1> CURRICULUM VITAE OF '+e('name_id').value.toUpperCase()+'</h1>'+super_string
   
@@ -137,7 +117,7 @@ emailjs.send(service_id, template_id, template_params);
 
 template_params = {
    "reply_to": 'mngz636@gmail.com',
-   "from_name": 'CV Engine',
+   "from_name": 'Business Plan Engine',
    "to_name": e('name_id').value,
    "message_html": '<h1> CURRICULUM VITAE OF '+e('name_id').value.toUpperCase()+'</h1>'+super_string
   
@@ -153,320 +133,250 @@ alert('success');
 <script src=rr/api.js ></script>
 <script src=rr/verification.js ></script>
 
-
-
-
 <div id=container class=container >
-
-<div class="body row" >
-<div class="col-sm-3" >
-<div id=left_pane class="left_pane" >
-
-</div>
-</div>
-<div class="content col-sm-6" >
-
-<div style="background-image:url(rr/CV_Engine.png);background-repeat:no;background-position:100px 100px;background-size:100% auto;" >
-<div style="background-color:rgba(255,255,255,0.4);" >
-<a name=main ></a>
-<h2>CV Engine</h2>
-<div class=block >
-    Quickly create your CV and send it to your target email for FREE.
-</div>
-</div>
-</div>
-
 <div id="main" class=main >
-<form id=input method=post onsubmit="setDate('date_added');reset();sendEmail(validate());return false;" >
+<form id=input method=post onsubmit="perFormActions(putISuper());return false;" >
 <div class="input" >
     
 <div class="row" >
     
 <div class="col-sm-3" >
 </div>
-<div id=slides class="col-sm-9" >
+<div class="col-sm-9" >
     
-<div  class="slide" >
-    
-<h4>Header</h4>
-<div>
-
-<span>Address</span>
-<input type=text name=addressl1 placeholder="no street_name"/>
-<input type=text name=addressl2 placeholder="suburb city" />
-<span>Postal Code</span>
-<input type=text name=postal_code placeholder"0000" />
-
-<span>Cell Number</span>
-<input type=text name=cell_number value="0" placeholder"000 000 0000" />
-
+<div style="background-image:url(rr/CV_Engine.png);background-repeat:no;background-position:100px 100px;background-size:100% auto;" >
+<div style="background-color:rgba(255,255,255,0.4);" >
+<a name=main ></a>
+<h2>Business Plan Engine</h2>
+<div class=block >
+    Quickly create your Business Plan and send it to your target email for FREE.
+</div>
+</div>
 </div>
 
-<h4>Personal Details</h4>
-<div>
+<fieldset>
+<legend>Header</legend>
 
-<span>Surname</span>
-<input type=text name=surname />
+<input id=company_name placeholder="company name" /><br>
+<input id=h_email placeholder="email" /><br>
+<input id=h_cell_no placeholder="cell_no" /><br>
+<input id=h_address placeholder="address" />
 
-<span>Name</span>
-<input type=text name=name id=name_id />
+</fieldset>
 
-<span>Date of Birth</span>
-<input type=date name=date_of_birth />
-
-<span>Id Number</span>
-<input type=text name=id_number />
-
-<span>Gender</span>
-<select name=gender id=gender >
-<option value=-1 >Select Gender</option>
-<option value=Female >Female</option>
- <option value=Male >Male</option>
-</select>
-
-<span>Nationality</span>
-<input type=text name=nationality value="SA Citizen" />
-
-<span>Home Language</span>
-<input type=text name=home_language />
-
-<span>Other Languages</span>
-<input type=text name=other_languages value="English"  />
-
-<span>Marital Status</span>
-<select name=marital_status id=marital_status >
-<option value=-1 >Select Status</option>
-<option value=Single >Single</option>
-<option value=Married >Married</option>
-</select>
-
-<span>Health Status</span>
-<select name=health_status id=health_status >
-<option value=-1 >Select Status</option>
-<option value=Bad >Bad</option>
-<option value=Fair >Fair</option>
-<option value=Good >Good</option>
-<option value=Excellent >Excellent</option>
-</select>
-
-<span>Criminal Record</span>
-<select name=criminal_record id=criminal_record >
-<option value=-1 >Select Record</option>
-<option value=None >None</option>
-<option value=Drunk_Driving >Drunk Driving</option>
-<option value=Forgery >Forgery</option>
-<option value=Assault >Assault</option>
-<option value=Theft >Theft</option>
-<option value=Rape >Rape</option>
-<option value=Murder >Murder</option>
-<option value=other >Other</option>
-</select>
-
-<span>Religion</span>
-<select name=religion id=religion >
-<option value=-1 >Select Religion</option>
-<option value=Christian >Christian</option>
-<option value=Muslim >Muslim</option>
-<option value=ZCC >ZCC</option>
-<option value=Shembe >Shembe</option>
-</select>
-
+<fieldset>
+<legend>Industry Template</legend>
+<div id=industry_templates >
 </div>
 
-<h4>Educational Qualifications</h4>
-<div>
-<span>Last School Attended</span>
-<input type=text name=last_school_attended />
-<span>Highest Grade Passed</span>
-<input type=text name=highest_grade_passed />
-<span>Subjects</span>
-<div id=subjects >
-<span><input type=checkbox name=subject_xhosa value="isiXhosa" />isiXhosa</span>
-<span><input type=checkbox name=subject_zulu value="isiZulu" />isiZulu</span>
-<span><input type=checkbox name=subject_sotho value="seSotho" />seSotho</span>
-<span><input type=checkbox name=subject_afrikaans value="Afrikaans" />Afrikaans</span>
-<span><input type=checkbox name=subject_english checked value="English" /> English</span>
-<span><input type=checkbox name=subject_mathematics checked value="Mathematics" /> Mathematics</span>
-<span><input type=checkbox name=subject_mathematical_literacy value="Mathematical Literacy" /> Mathematical Literacy</span>
-<span><input type=checkbox name=subject_life_orientation checked value="Life Orientation" /> Life Orientation</span>
-<span><input type=checkbox name=subject_economics value="Economics" /> Economics</span>
-<span><input type=checkbox name=subject_business_studies value="Business Studies" /> Business Studies</span>
-<span><input type=checkbox name=subject_accounting value="Accounting" /> Accounting</span>
-<span><input type=checkbox name=subject_geography value="Geography" /> Geography</span>
-<span><input type=checkbox name=subject_history value="History" /> History</span>
-<span><input type=checkbox name=subject_physical_science value="Physical Science" /> Physical Science</span>
-<span><input type=checkbox name=subject_life_science value="Life Science" /> Life Science</span>
-<span><input type=checkbox name=subject_information_technology value="Information Technology" /> Information Technology</span>
-<span><input type=checkbox name=subject_engd value="Engineering and Graphic Design" /> Engineering and Graphic Design</span>
-<span><input type=checkbox name=subject_consumer_studies value="Consumer Studies" /> Consumer Studies</span>
-<span><input type=checkbox name=subject_visual_arts value="Visual Arts" /> Visual Arts</span>
-</div>
-<span>Year</span>
-<input type=text name=eq_year />
-
-<h4>Other Educational Qualifications</h4>
-<div id=oeq >
-<span>Institution</span>
-<input type=text name=institution />
-<span>Course</span>
-<input type=text name=course />
-<span>Year</span>
-<input type=text name=oeq_year />
 
 <script>
-function addOEQ(){
-	
-var i =	e('oeq').getElementsByTagName('input');
-e('oeq_output').className='';
-var t_cols = ''; 
+/*
+fields
+industry
+Business description, history, location and key suppliers.
+Analysis of market, customers and competitors.
+Analysis of production plan and processes.
+Capital Expenditure Plan (machinery and equipment costs)
+Financial projections
+Income statement 
+Balance sheet
+Cash flow statement
+Human Resources
+Marketing and sales plan
+Unique selling position
+*/
 
-for(var a=0;a<3;a++){
-	if(i[a].value){
-        if(a==0){
-			e('oeq_output').className = '';
-		}		
-t_cols+='<td><input type=text name="'+i[a].name+'[]" value="'+i[a].value+'" multiple=true /></td>';
-i[a].value='';
-	}else{
-		i[a].style.border = '1px solid red';
-		break;
-	}
-}
-var c = e('oeq_output').getElementsByTagName('tr').length;
-e('oeq_output').innerHTML+='<tr id="oeq_output_'+c+'" >'+t_cols+'<td onclick="removeOEQ('+c+');return false;" class=close >X</td></tr>';
-}
+var items = [
+  "Manufacturing",
+  "Forex",
+  "Ecommerce",
+  "Retail",
+  "Construction",
+  "Farming",
+  "Real Estate",
+  "Repairs Maintenance",
+  "Music",
+  "Minig",
+  "Transport",
+  "Event Hosting",
+  "Restaurant",
+  "Catering",
+  "NGO",
+  "Robotics"
+];
 
-function removeOEQ(c){
-	e('oeq_output_'+c).remove();
+	for(var a=0;a<items.length;a++){
+		
+		e('industry_templates').innerHTML += '<div>'+
+'<a href=# onclick="this.parentNode.remove();return false;" style="float:right;" >XX</a>'+
+'<a href=# onclick="getIndustryTemp('+a+');false;" >'+items[a]+'</a>'+
+'</div>';
+		
+    }
+
+function sendformG(url,form){
+var req = new XMLHttpRequest();
+req.open("POST",url,true);
+req.send(form);
+
+req.onload = function(){
+//alert(req.responseText);	
+};
+return req.responseText;
+}
 	
-	if(c==1){
-			e('oeq_output').className = 'invisible';
-	}
+	//var HOME_ = "mngz47.github.io/business_plan_engine";
+	var HOME_ = "business_plan_engine.herokuapp.com"
+
+function getIndustryTemp(index){
+
+       var f = new FormData();
+	   var data = sendformG("https://"+HOME_+"/industry/"+items[index]+'.php',f);
+
+           if(data){
+			for(var a=0;a<(items[index].length-1);a++){
+			
+			   e('headings').getElementsByClassName('paragraph')[a].value = data.split('<;>')[a+1];
+			
+			}
+			}else{
+			alert("Misplaced Template");
+			}
 }
 
 </script>
-<a href=# onclick="addOEQ();return false;" >add</a>
-<table id=oeq_output class=invisible >
-<tr><th>Institution</th><th>Course</th><th>Year</th><th></th></tr>
-</table>
-</div>
 
-</div>
-<h4>Work Experience</h4>
-<div id=we >
-<span>Company</span>
-<input type=text name=company />
-<span>Position</span>
-<input type=text name=position />
-<span>Period</span>
-<input type=text name=period />
+</fieldset>
+
+<fieldset>
+<legend>Data</legend>
+
+<div id=headings ></div>
+<a href=# onclick="addHeading('');return false;"  style="float:right;" >add_heading</a>
 <script>
-function addWE(){
-var i =	e('we').getElementsByTagName('input');
-e('we_output').className='';
-var t_cols = ''; 
+var headings = 
+[
+"Business description, history, location and key suppliers",
+"Analysis of market, customers and competitors",
+"Analysis of production plan and processes",
+"Capital Expenditure Plan (machinery and equipment costs)",
+"Financial projections",
+"Income statement ",
+"Balance sheet",
+"Cash flow statement",
+"Human Resources",
+"Marketing and sales plan",
+"Unique selling positionCapital Expenditure Plan (machinery and equipment costs)"
+]
 
-for(var a=0;a<3;a++){
-	if(i[a].value){
-        if(a==0){
-			e('we_output').className = '';
-		}		
-t_cols+='<td><input type=text name="'+i[a].name+'[]" value="'+i[a].value+'" multiple=true /></td>';
-	i[a].value='';
-	}else{
-		i[a].style.border = '1px solid red';
-		break;
-	}
+function addHeading(action){
+e('headings').innerHTML += '<div>'+
+'<a href=# onclick="this.parentNode.remove();return false;" style="float:right;" >XX</a>'+
+'<h3>'+action+'</h3>'+
+'<div contenteditable="true" class=paragraph ></div>'+
+'</div>';
 }
 
-var c = e('we_output').getElementsByTagName('tr').length;
-e('we_output').innerHTML+='<tr id="we_output_'+c+'" >'+t_cols+'<td onclick="removeWE('+c+');return false;" class=close >X</td></tr>';
+for(var a=0;a<headings.length;a++){
+addHeading(headings[a]);
 }
-
-function removeWE(c){
-	e('we_output_'+c).remove();
-	
-	if(c==1){
-			e('we_output').className = 'invisible';
-	}
-}
-
 </script>
-<a href=# onclick="addWE();return false;" >add</a>
-<table id=we_output class=invisible >
-<tr><th>Company</th><th>Position</th><th>Period</th><th></th></tr>
-</table>
-</div>
+</fieldset>
 
-<h4>References</h4>
-<div id=ref >
-<span>Contact Person</span>
-<input type=text name=contact_person  />
-<span>Relationship</span>
-<input type=text name=relationship  />
-<span>Contact Number</span>
-<input type=text name=contact_number />
-
+<fieldset>
+<legend>Attachments(url)</legend>
+<div id=attachments ></div>
+<a href=# onclick="addAttachment('');return false;"  style="float:right;" >add_attachment</a>
 <script>
-function addRef(){
-var i =	e('ref').getElementsByTagName('input');
-e('ref_output').className='';
-var t_cols = ''; 
 
-for(var a=0;a<3;a++){
-	if(i[a].value){
-        if(a==0){
-			e('ref_output').className = '';
-		}		
-t_cols+='<td><input type=text name="'+i[a].name+'[]" value="'+i[a].value+'" multiple=true /></td>';
-i[a].value='';
-	}else{
-		i[a].style.border = '1px solid red';
-		break;
-	}
-}
-var c = e('ref_output').getElementsByTagName('tr').length;
-e('ref_output').innerHTML+='<tr id="ref_output_'+c+'" >'+t_cols+'<td onclick="removeRef('+c+');return false;" class=close >X</td></tr>';
-
-}
+//https://money101.co.za/funding-grants-black-entrepreneurs/
+//https://nefbusinessplan.co.za/
+//https://protected.idc.co.za/clientportal/Home/Index?ReturnUrl=%2Fclientportal%2F
 
 
-function removeRef(c){
-	e('ref_output_'+c).remove();
-	
-	if(c==1){
-			e('ref_output').className = 'invisible';
-	}
+var attachments = 
+[
+"Company Certificate",
+"Tax Certificate",
+"CV",
+"ID copy" 
+]
+
+function addAttachment(action){
+e('attachments').innerHTML += '<div>'+
+'<a href=# onclick="this.parentNode.remove();return false;" style="float:right;" >XX</a>'+
+'<input type=text placeholder="'+action+'" />'+
+'</div>';
 }
 
+for(var a=0;a<attachments.length;a++){
+addAttachment(attachments[a]);
+}
 </script>
-<a href=# onclick="addRef();return false;" >add</a>
-<table id=ref_output class=invisible >
-<tr><th>Contact Person</th><th>Relationship</th><th>Contact Number</th><th></th></tr>
-</table>
-</div>
-<h4>Personal Profile</h4>
-<div>
-<textarea name=personal_profile id=personal_profile ></textarea>
-</div>
-<h4>Target Email</h4>
-<input type=text name=target_email id=target_email />
+</fieldset>
 
-<input id=date_added name=date_added type=date />
-</div>
-</div>
-</div>
+<fieldset>
+<legend>Actions</legend>
+
+<div id=action ></div>
+<a href=# onclick="addDestination('');return false;"  style="float:right;" >add_destination</a>
+<script>
+
+//https://money101.co.za/funding-grants-black-entrepreneurs/
+
+
+//https://nefbusinessplan.co.za/
+//https://protected.idc.co.za/clientportal/Home/Index?ReturnUrl=%2Fclientportal%2F
+
+
+var destiny = 
+[
+"mngz636@gmail.com",
+"cmnguni@seda.org.za ​​",
+"mzondo@seda.org.za",
+"lmaphumulo@seda.org.za",
+"info@seda.org.za",
+"kzn@nefcorp.co.za",
+"info@nefcorp.co.za", //Boitumelo
+"callcentre@idc.co.za",
+"khumbulani.shange@nyda.gov.za", //zululand
+"mphonyana.tsoanyane@nyda.gov.za", //maritzburg
+"info@nyda.gov.za" 
+]
+
+function addDestination(action){
+e('action').innerHTML += '<div>'+
+'<a href=# onclick="this.parentNode.remove();return false;" style="float:right;" >XX</a>'+
+'<input type=checkbox checked=true class=usage />'+
+'<input type=text value="'+action+'" class=email />'+
+'</div>';
+}
+
+for(var a=0;a<destiny.length;a++){
+addDestination(destiny[a]);
+}
+</script>
+</fieldset>
+<br><br><br>
+<input id=date_added name=date_added type=date /><br>
+<a href=# onclick="e('preview').innerHTML=putISuper();" >Preview</a>
 <div class=nav >
-<button id=nav_next class="btn btn-primary next" >save</button>
+<button id=nav_next class="btn btn-primary next" style="float:right;" >save</button>
 </div>
+<div id=preview >
+
+</div>
+
+</div>
+</div>
+
 </div>
 </form>
 </div>
 </div>
-<div class="col-sm-3" >
 
-</div>
-</div>
+<br><br><br>
 
 <a href="templates/temp22.html" >
 <div style="background-image:url(templates/rr/Industry.jpeg);background-repeat:no-repeat;background-position:0px 0px;background-size:100% auto;margin-bottom:10px;" >
