@@ -227,7 +227,7 @@ return req.responseText;
 }
 	
 	//var HOME_ = "mngz47.github.io/business_plan_engine";
-	var HOME_ = "business_plan_engine.herokuapp.com"
+	var HOME_ = "business-plan-engine.herokuapp.com"
 
 function getIndustryTemp(index){
 
