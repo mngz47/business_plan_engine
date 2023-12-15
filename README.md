@@ -7,8 +7,8 @@
 
  Send plan to relevant targets.
 
- https://mngz47.github.io/business_plan_engine/
+https://mngz47.github.io/business_plan_engine/
 
- 
+https://www.patreon.com/productlists 
 
  
